@@ -101,7 +101,7 @@ public class RoomWrapper
 			setDescription(description);
 		}
 
-		String imageUrl = (String)attributes.get("imageUrl");
+		Long imageUrl = (Long)attributes.get("imageUrl");
 
 		if (imageUrl != null) {
 			setImageUrl(imageUrl);
@@ -203,7 +203,7 @@ public class RoomWrapper
 	 * @return the image url of this room
 	 */
 	@Override
-	public String getImageUrl() {
+	public long getImageUrl() {
 		return model.getImageUrl();
 	}
 
@@ -368,7 +368,7 @@ public class RoomWrapper
 	 * @param imageUrl the image url of this room
 	 */
 	@Override
-	public void setImageUrl(String imageUrl) {
+	public void setImageUrl(long imageUrl) {
 		model.setImageUrl(imageUrl);
 	}
 

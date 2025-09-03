@@ -38,7 +38,7 @@ public class RoomLocalServiceUtil {
 	 * Never modify this class directly. Add custom service methods to <code>com.hotel.reservation.service.impl.RoomLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
 	public static Room addRoom(
-		long userId, String name, String description, String imageUrl,
+		long userId, String name, String description, long imageUrl,
 		int maxGuests, java.math.BigDecimal dailyRate, String amenities,
 		boolean status,
 		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
@@ -299,7 +299,7 @@ public class RoomLocalServiceUtil {
 	}
 
 	public static Room updateRoom(
-			String name, String description, String imageUrl, int maxGuests,
+			String name, String description, long imageUrl, int maxGuests,
 			java.math.BigDecimal dailyRate, String amenities, boolean status,
 			long roomId)
 		throws com.hotel.reservation.exception.NoSuchRoomException {

@@ -41,11 +41,9 @@ import java.util.List;
         property = {
                 "com.liferay.portlet.display-category=category.hotel",
                 "com.liferay.portlet.instanceable=true",
-                "javax.portlet.display-name=Sistema de Reservas",
                 "javax.portlet.name=" + HotelReservationWebPortletKeys.HOTELRESERVATIONWEB,
                 "javax.portlet.resource-bundle=content.Language",
-                "javax.portlet.security-role-ref=power-user,user",
-                "javax.portlet.init-param.add-process-action-success-action=false"
+                "javax.portlet.security-role-ref=power-user,user"
         }
 )
 
@@ -92,7 +90,7 @@ public class HotelReservationWebPortlet extends MVCPortlet {
                     themeDisplay.getUserId(),
                     roomName,
                     roomDescription,
-                    String.valueOf(imageFileEntryId), // Passa o ID da imagem salva
+                    imageFileEntryId, // Passa o ID da imagem salva
                     maxGuests,
                     new BigDecimal(dailyRate),
                     amenities,

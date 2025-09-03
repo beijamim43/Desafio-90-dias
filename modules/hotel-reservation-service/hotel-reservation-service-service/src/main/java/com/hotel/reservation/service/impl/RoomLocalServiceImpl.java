@@ -29,7 +29,8 @@ import java.util.List;
 public class RoomLocalServiceImpl extends RoomLocalServiceBaseImpl {
 
     @Override
-    public Room addRoom(long userId, String name, String description, String imageUrl, int maxGuests, BigDecimal dailyRate, String amenities, boolean status, ServiceContext serviceContext) {
+    public Room addRoom(long userId, String name, String description, long imageUrl, int maxGuests,
+                        BigDecimal dailyRate, String amenities, boolean status, ServiceContext serviceContext) {
         long groupId = serviceContext.getScopeGroupId();
         long companyId = serviceContext.getCompanyId();
         Room quarto = roomPersistence.create(counterLocalService.increment());
@@ -52,7 +53,8 @@ public class RoomLocalServiceImpl extends RoomLocalServiceBaseImpl {
     }
 
     @Override
-    public Room updateRoom(String name, String description, String imageUrl, int maxGuests, BigDecimal dailyRate, String amenities, boolean status, long roomId)
+    public Room updateRoom(String name, String description, long imageUrl, int maxGuests, BigDecimal dailyRate,
+                           String amenities, boolean status, long roomId)
                             throws NoSuchRoomException {
         Room quarto = roomPersistence.findByPrimaryKey(roomId);
 

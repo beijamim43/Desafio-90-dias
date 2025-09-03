@@ -30,8 +30,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.naming.InvalidNameException;
-
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
@@ -61,7 +59,7 @@ public interface ReservationLocalService
 			long groupId, long companyId, long userId, long roomId,
 			String guestName, String guestEmail, Date checkInDate,
 			Date checkOutDate)
-		throws InvalidNameException, PortalException;
+		throws InvalidGuestNameException, PortalException;
 
 	/**
 	 * Adds the reservation to the database. Also notifies the appropriate model listeners.

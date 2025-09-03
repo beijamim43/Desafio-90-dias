@@ -130,7 +130,7 @@ public class RoomPersistenceTest {
 
 		newRoom.setDescription(RandomTestUtil.randomString());
 
-		newRoom.setImageUrl(RandomTestUtil.randomString());
+		newRoom.setImageUrl(RandomTestUtil.nextLong());
 
 		newRoom.setMaxGuests(RandomTestUtil.nextInt());
 
@@ -432,7 +432,7 @@ public class RoomPersistenceTest {
 
 		room.setDescription(RandomTestUtil.randomString());
 
-		room.setImageUrl(RandomTestUtil.randomString());
+		room.setImageUrl(RandomTestUtil.nextLong());
 
 		room.setMaxGuests(RandomTestUtil.nextInt());
 

@@ -25,7 +25,7 @@
 		<field name="modifiedDate" type="Date" />
 		<field name="name" type="String" />
 		<field name="description" type="String" />
-		<field name="imageUrl" type="String" />
+		<field name="imageUrl" type="long" />
 		<field name="maxGuests" type="int" />
 		<field name="dailyRate" type="BigDecimal" />
 		<field name="amenities" type="String" />

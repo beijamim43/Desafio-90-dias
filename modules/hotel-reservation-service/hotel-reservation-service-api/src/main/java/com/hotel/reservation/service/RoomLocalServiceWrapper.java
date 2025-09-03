@@ -28,7 +28,7 @@ public class RoomLocalServiceWrapper
 
 	@Override
 	public com.hotel.reservation.model.Room addRoom(
-		long userId, String name, String description, String imageUrl,
+		long userId, String name, String description, long imageUrl,
 		int maxGuests, java.math.BigDecimal dailyRate, String amenities,
 		boolean status,
 		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
@@ -334,7 +334,7 @@ public class RoomLocalServiceWrapper
 
 	@Override
 	public com.hotel.reservation.model.Room updateRoom(
-			String name, String description, String imageUrl, int maxGuests,
+			String name, String description, long imageUrl, int maxGuests,
 			java.math.BigDecimal dailyRate, String amenities, boolean status,
 			long roomId)
 		throws com.hotel.reservation.exception.NoSuchRoomException {

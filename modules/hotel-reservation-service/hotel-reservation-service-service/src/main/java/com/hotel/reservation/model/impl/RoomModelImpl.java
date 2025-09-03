@@ -68,7 +68,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 		{"companyId", Types.BIGINT}, {"userId", Types.BIGINT},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
 		{"name", Types.VARCHAR}, {"description", Types.VARCHAR},
-		{"imageUrl", Types.VARCHAR}, {"maxGuests", Types.INTEGER},
+		{"imageUrl", Types.BIGINT}, {"maxGuests", Types.INTEGER},
 		{"dailyRate", Types.DECIMAL}, {"amenities", Types.VARCHAR},
 		{"status", Types.BOOLEAN}
 	};
@@ -85,7 +85,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("description", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("imageUrl", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("imageUrl", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("maxGuests", Types.INTEGER);
 		TABLE_COLUMNS_MAP.put("dailyRate", Types.DECIMAL);
 		TABLE_COLUMNS_MAP.put("amenities", Types.VARCHAR);
@@ -93,7 +93,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table Room (roomId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null,description VARCHAR(75) null,imageUrl VARCHAR(75) null,maxGuests INTEGER,dailyRate BIGDECIMAL null,amenities VARCHAR(75) null,status BOOLEAN)";
+		"create table Room (roomId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null,description VARCHAR(75) null,imageUrl LONG,maxGuests INTEGER,dailyRate BIGDECIMAL null,amenities VARCHAR(75) null,status BOOLEAN)";
 
 	public static final String TABLE_SQL_DROP = "drop table Room";
 
@@ -275,7 +275,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 			attributeSetterBiConsumers.put(
 				"description", (BiConsumer<Room, String>)Room::setDescription);
 			attributeSetterBiConsumers.put(
-				"imageUrl", (BiConsumer<Room, String>)Room::setImageUrl);
+				"imageUrl", (BiConsumer<Room, Long>)Room::setImageUrl);
 			attributeSetterBiConsumers.put(
 				"maxGuests", (BiConsumer<Room, Integer>)Room::setMaxGuests);
 			attributeSetterBiConsumers.put(
@@ -454,17 +454,12 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 
 	@JSON
 	@Override
-	public String getImageUrl() {
-		if (_imageUrl == null) {
-			return "";
-		}
-		else {
-			return _imageUrl;
-		}
+	public long getImageUrl() {
+		return _imageUrl;
 	}
 
 	@Override
-	public void setImageUrl(String imageUrl) {
+	public void setImageUrl(long imageUrl) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
@@ -642,7 +637,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 		roomImpl.setName(this.<String>getColumnOriginalValue("name"));
 		roomImpl.setDescription(
 			this.<String>getColumnOriginalValue("description"));
-		roomImpl.setImageUrl(this.<String>getColumnOriginalValue("imageUrl"));
+		roomImpl.setImageUrl(this.<Long>getColumnOriginalValue("imageUrl"));
 		roomImpl.setMaxGuests(
 			this.<Integer>getColumnOriginalValue("maxGuests"));
 		roomImpl.setDailyRate(
@@ -768,12 +763,6 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 
 		roomCacheModel.imageUrl = getImageUrl();
 
-		String imageUrl = roomCacheModel.imageUrl;
-
-		if ((imageUrl != null) && (imageUrl.length() == 0)) {
-			roomCacheModel.imageUrl = null;
-		}
-
 		roomCacheModel.maxGuests = getMaxGuests();
 
 		roomCacheModel.dailyRate = getDailyRate();
@@ -857,7 +846,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 	private boolean _setModifiedDate;
 	private String _name;
 	private String _description;
-	private String _imageUrl;
+	private long _imageUrl;
 	private int _maxGuests;
 	private BigDecimal _dailyRate;
 	private String _amenities;

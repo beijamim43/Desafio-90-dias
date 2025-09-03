@@ -46,7 +46,7 @@ public interface Reservation extends PersistedModel, ReservationModel {
 			}
 
 		};
-
     public static final int STATUS_CONFIRMADA = 0;
     public static final int STATUS_CANCELADA = 1;
+
 }

@@ -124,13 +124,7 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 			roomImpl.setDescription(description);
 		}
 
-		if (imageUrl == null) {
-			roomImpl.setImageUrl("");
-		}
-		else {
-			roomImpl.setImageUrl(imageUrl);
-		}
-
+		roomImpl.setImageUrl(imageUrl);
 		roomImpl.setMaxGuests(maxGuests);
 		roomImpl.setDailyRate(dailyRate);
 
@@ -163,7 +157,8 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 		modifiedDate = objectInput.readLong();
 		name = objectInput.readUTF();
 		description = objectInput.readUTF();
-		imageUrl = objectInput.readUTF();
+
+		imageUrl = objectInput.readLong();
 
 		maxGuests = objectInput.readInt();
 		dailyRate = (BigDecimal)objectInput.readObject();
@@ -198,12 +193,7 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 			objectOutput.writeUTF(description);
 		}
 
-		if (imageUrl == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(imageUrl);
-		}
+		objectOutput.writeLong(imageUrl);
 
 		objectOutput.writeInt(maxGuests);
 		objectOutput.writeObject(dailyRate);
@@ -226,7 +216,7 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 	public long modifiedDate;
 	public String name;
 	public String description;
-	public String imageUrl;
+	public long imageUrl;
 	public int maxGuests;
 	public BigDecimal dailyRate;
 	public String amenities;

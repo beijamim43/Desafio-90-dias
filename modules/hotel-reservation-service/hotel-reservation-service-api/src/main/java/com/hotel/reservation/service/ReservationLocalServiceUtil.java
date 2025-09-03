@@ -5,6 +5,7 @@
 
 package com.hotel.reservation.service;
 
+import com.hotel.reservation.exception.InvalidGuestNameException;
 import com.hotel.reservation.exception.NoSuchReservationException;
 import com.hotel.reservation.model.Reservation;
 
@@ -42,7 +43,7 @@ public class ReservationLocalServiceUtil {
 			long groupId, long companyId, long userId, long roomId,
 			String guestName, String guestEmail, java.util.Date checkInDate,
 			java.util.Date checkOutDate)
-		throws javax.naming.InvalidNameException, PortalException {
+		throws InvalidGuestNameException, PortalException {
 
 		return getService().addReservation(
 			groupId, companyId, userId, roomId, guestName, guestEmail,

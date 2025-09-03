@@ -19,7 +19,7 @@
         <!-- Other fields -->
         <column name="name" type="String" />
         <column name="description" type="String" />
-        <column name="imageUrl" type="String" />
+        <column name="imageUrl" type="long" />
         <column name="maxGuests" type="int" />
         <column name="dailyRate" type="BigDecimal" />
         <column name="amenities" type="String" />

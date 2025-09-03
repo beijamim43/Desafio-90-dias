@@ -5,6 +5,7 @@
 
 package com.hotel.reservation.service;
 
+import com.hotel.reservation.exception.InvalidGuestNameException;
 import com.hotel.reservation.exception.NoSuchReservationException;
 import com.liferay.portal.kernel.service.ServiceWrapper;
 import com.liferay.portal.kernel.service.persistence.BasePersistence;
@@ -36,7 +37,7 @@ public class ReservationLocalServiceWrapper
 			String guestName, String guestEmail, java.util.Date checkInDate,
 			java.util.Date checkOutDate)
 		throws com.liferay.portal.kernel.exception.PortalException,
-			   javax.naming.InvalidNameException {
+            InvalidGuestNameException {
 
 		return _reservationLocalService.addReservation(
 			groupId, companyId, userId, roomId, guestName, guestEmail,

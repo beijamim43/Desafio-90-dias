@@ -184,15 +184,14 @@ public interface RoomModel extends BaseModel<Room>, ShardedModel {
 	 *
 	 * @return the image url of this room
 	 */
-	@AutoEscape
-	public String getImageUrl();
+	public long getImageUrl();
 
 	/**
 	 * Sets the image url of this room.
 	 *
 	 * @param imageUrl the image url of this room
 	 */
-	public void setImageUrl(String imageUrl);
+	public void setImageUrl(long imageUrl);
 
 	/**
 	 * Returns the max guests of this room.

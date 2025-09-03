@@ -23,7 +23,7 @@ create table Room (
 	modifiedDate DATE null,
 	name VARCHAR(75) null,
 	description VARCHAR(75) null,
-	imageUrl VARCHAR(75) null,
+	imageUrl LONG,
 	maxGuests INTEGER,
 	dailyRate BIGDECIMAL null,
 	amenities VARCHAR(75) null,

@@ -41,8 +41,8 @@ public class RoomTable extends BaseTable<RoomTable> {
 		"name", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 	public final Column<RoomTable, String> description = createColumn(
 		"description", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
-	public final Column<RoomTable, String> imageUrl = createColumn(
-		"imageUrl", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<RoomTable, Long> imageUrl = createColumn(
+		"imageUrl", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
 	public final Column<RoomTable, Integer> maxGuests = createColumn(
 		"maxGuests", Integer.class, Types.INTEGER, Column.FLAG_DEFAULT);
 	public final Column<RoomTable, BigDecimal> dailyRate = createColumn(
