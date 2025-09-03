@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder auto-namespace-tables="false" package-path="com.hotel.reservation">
+    <namespace>Hotel</namespace>
+
+    <!-- Entidade Room -->
+    <entity local-service="true" name="Room" remote-service="true">
+        <!-- PK fields -->
+        <column name="roomId" primary="true" type="long" />
+
+        <!-- Audit fields -->
+        <column name="groupId" type="long" />
+        <column name="companyId" type="long" />
+        <column name="userId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Other fields -->
+        <column name="name" type="String" />
+        <column name="description" type="String" />
+        <column name="imageUrl" type="String" />
+        <column name="maxGuests" type="int" />
+        <column name="dailyRate" type="BigDecimal" />
+        <column name="amenities" type="String" />
+        <column name="status" type="boolean" />
+
+        <!-- Order -->
+        <order by="asc">
+            <order-column name="name" />
+        </order>
+
+        <!-- Finder methods -->
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId" />
+        </finder>
+
+        <finder name="G_S" return-type="Collection">
+            <finder-column name="groupId" />
+            <finder-column name="status" />
+        </finder>
+    </entity>
+
+    <!-- Entidade Reservation -->
+    <entity local-service="true" name="Reservation" remote-service="true">
+        <!-- PK fields -->
+        <column name="reservationId" primary="true" type="long" />
+
+        <!-- Audit fields -->
+        <column name="groupId" type="long" />
+        <column name="companyId" type="long" />
+        <column name="userId" type="long" />
+        <column name="createDate" type="Date" />
+        <column name="modifiedDate" type="Date" />
+
+        <!-- Other fields -->
+        <column name="roomId" type="long" />
+        <column name="guestName" type="String" />
+        <column name="guestEmail" type="String" />
+        <column name="checkInDate" type="Date" />
+        <column name="checkOutDate" type="Date" />
+        <column name="totalAmount" type="BigDecimal" />
+        <column name="status" type="int" />
+
+        <!-- Order -->
+        <order by="desc">
+            <order-column name="createDate" />
+        </order>
+
+        <!-- Finder methods -->
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId" />
+        </finder>
+
+        <finder name="RoomId" return-type="Collection">
+            <finder-column name="roomId" />
+        </finder>
+
+        <finder name="G_S" return-type="Collection">
+            <finder-column name="groupId" />
+            <finder-column name="status" />
+        </finder>
+
+        <finder name="R_S" return-type="Collection">
+            <finder-column name="roomId" />
+            <finder-column name="status" />
+        </finder>
+    </entity>
+</service-builder>

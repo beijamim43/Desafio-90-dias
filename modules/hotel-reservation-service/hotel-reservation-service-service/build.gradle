@@ -1,0 +1,12 @@
+dependencies {
+	api project(":modules:hotel-reservation-service:hotel-reservation-service-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../hotel-reservation-service-api/src/main/java"
+	testDir = "../hotel-reservation-service-test/src/testIntegration/java"
+}
+
+group = "com.hotel.reservation"

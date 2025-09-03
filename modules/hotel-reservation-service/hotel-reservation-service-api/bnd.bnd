@@ -1,0 +1,10 @@
+Bundle-Name: hotel-reservation-service-api
+Bundle-SymbolicName: com.hotel.reservation.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.hotel.reservation.exception,\
+	com.hotel.reservation.model,\
+	com.hotel.reservation.service,\
+	com.hotel.reservation.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../hotel-reservation-service-service/service.xml

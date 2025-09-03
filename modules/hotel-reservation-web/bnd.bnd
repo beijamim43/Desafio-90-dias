@@ -1,0 +1,7 @@
+Bundle-Name: hotel-reservation-web
+Bundle-SymbolicName: com.hotel.reservation
+Bundle-Version: 1.0.0
+Export-Package: com.hotel.reservation.constants
+Provide-Capability:\
+	liferay.language.resources;\
+		resource.bundle.base.name="content.Language"
