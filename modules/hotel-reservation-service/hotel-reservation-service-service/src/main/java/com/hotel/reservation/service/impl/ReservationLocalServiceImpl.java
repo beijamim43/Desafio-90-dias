@@ -21,15 +21,15 @@ import java.util.concurrent.TimeUnit;
  * @author Brian Wing Shun Chan
  */
 @Component(
-	property = "model.class.name=com.hotel.reservation.model.Reservation",
-	service = AopService.class
+        property = "model.class.name=com.hotel.reservation.model.Reservation",
+        service = AopService.class
 )
 public class ReservationLocalServiceImpl
-	extends ReservationLocalServiceBaseImpl {
+        extends ReservationLocalServiceBaseImpl {
 
     public Reservation addReservation(long groupId, long companyId, long userId, long roomId, String guestName, String guestEmail,
                                       Date checkInDate, Date checkOutDate)
-                                      throws PortalException, InvalidGuestNameException {
+            throws PortalException, InvalidGuestNameException {
 
         validadereservation(checkInDate, checkOutDate);
         validateEmail(guestEmail);

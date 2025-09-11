@@ -15,11 +15,11 @@ import org.osgi.service.component.annotations.Component;
  * @author Brian Wing Shun Chan
  */
 @Component(
-	property = {
-		"json.web.service.context.name=hotel",
-		"json.web.service.context.path=Reservation"
-	},
-	service = AopService.class
+        property = {
+                "json.web.service.context.name=hotel",
+                "json.web.service.context.path=Reservation"
+        },
+        service = AopService.class
 )
 public class ReservationServiceImpl extends ReservationServiceBaseImpl {
 }

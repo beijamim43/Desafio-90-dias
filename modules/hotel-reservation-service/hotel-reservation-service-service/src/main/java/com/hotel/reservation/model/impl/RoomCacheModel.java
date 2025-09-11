@@ -72,8 +72,8 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 		sb.append(name);
 		sb.append(", description=");
 		sb.append(description);
-		sb.append(", imageUrl=");
-		sb.append(imageUrl);
+		sb.append(", ImageFileEntryId=");
+		sb.append(ImageFileEntryId);
 		sb.append(", maxGuests=");
 		sb.append(maxGuests);
 		sb.append(", dailyRate=");
@@ -124,7 +124,7 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 			roomImpl.setDescription(description);
 		}
 
-		roomImpl.setImageUrl(imageUrl);
+		roomImpl.setImageFileEntryId(ImageFileEntryId);
 		roomImpl.setMaxGuests(maxGuests);
 		roomImpl.setDailyRate(dailyRate);
 
@@ -158,7 +158,7 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 		name = objectInput.readUTF();
 		description = objectInput.readUTF();
 
-		imageUrl = objectInput.readLong();
+		ImageFileEntryId = objectInput.readLong();
 
 		maxGuests = objectInput.readInt();
 		dailyRate = (BigDecimal)objectInput.readObject();
@@ -193,7 +193,7 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 			objectOutput.writeUTF(description);
 		}
 
-		objectOutput.writeLong(imageUrl);
+		objectOutput.writeLong(ImageFileEntryId);
 
 		objectOutput.writeInt(maxGuests);
 		objectOutput.writeObject(dailyRate);
@@ -216,7 +216,7 @@ public class RoomCacheModel implements CacheModel<Room>, Externalizable {
 	public long modifiedDate;
 	public String name;
 	public String description;
-	public long imageUrl;
+	public long ImageFileEntryId;
 	public int maxGuests;
 	public BigDecimal dailyRate;
 	public String amenities;

@@ -130,7 +130,7 @@ public class RoomPersistenceTest {
 
 		newRoom.setDescription(RandomTestUtil.randomString());
 
-		newRoom.setImageUrl(RandomTestUtil.nextLong());
+		newRoom.setImageFileEntryId(RandomTestUtil.nextLong());
 
 		newRoom.setMaxGuests(RandomTestUtil.nextInt());
 
@@ -159,7 +159,8 @@ public class RoomPersistenceTest {
 		Assert.assertEquals(existingRoom.getName(), newRoom.getName());
 		Assert.assertEquals(
 			existingRoom.getDescription(), newRoom.getDescription());
-		Assert.assertEquals(existingRoom.getImageUrl(), newRoom.getImageUrl());
+		Assert.assertEquals(
+			existingRoom.getImageFileEntryId(), newRoom.getImageFileEntryId());
 		Assert.assertEquals(
 			existingRoom.getMaxGuests(), newRoom.getMaxGuests());
 		Assert.assertEquals(
@@ -211,8 +212,8 @@ public class RoomPersistenceTest {
 		return OrderByComparatorFactoryUtil.create(
 			"Room", "roomId", true, "groupId", true, "companyId", true,
 			"userId", true, "createDate", true, "modifiedDate", true, "name",
-			true, "description", true, "imageUrl", true, "maxGuests", true,
-			"dailyRate", true, "amenities", true, "status", true);
+			true, "description", true, "ImageFileEntryId", true, "maxGuests",
+			true, "dailyRate", true, "amenities", true, "status", true);
 	}
 
 	@Test
@@ -432,7 +433,7 @@ public class RoomPersistenceTest {
 
 		room.setDescription(RandomTestUtil.randomString());
 
-		room.setImageUrl(RandomTestUtil.nextLong());
+		room.setImageFileEntryId(RandomTestUtil.nextLong());
 
 		room.setMaxGuests(RandomTestUtil.nextInt());
 

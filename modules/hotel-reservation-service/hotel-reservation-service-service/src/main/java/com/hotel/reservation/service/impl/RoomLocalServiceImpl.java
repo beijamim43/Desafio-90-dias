@@ -23,14 +23,14 @@ import java.util.List;
  * @author Brian Wing Shun Chan
  */
 @Component(
-	property = "model.class.name=com.hotel.reservation.model.Room",
-	service = AopService.class
+        property = "model.class.name=com.hotel.reservation.model.Room",
+        service = AopService.class
 )
 public class RoomLocalServiceImpl extends RoomLocalServiceBaseImpl {
 
     @Override
-    public Room addRoom(long userId, String name, String description, long imageUrl, int maxGuests,
-                        BigDecimal dailyRate, String amenities, boolean status, ServiceContext serviceContext) {
+    public Room addRoom(long userId, String name, String description, long ImageFileEntryId, int maxGuests, BigDecimal dailyRate,
+                        String amenities, boolean status, ServiceContext serviceContext) {
         long groupId = serviceContext.getScopeGroupId();
         long companyId = serviceContext.getCompanyId();
         Room quarto = roomPersistence.create(counterLocalService.increment());
@@ -43,7 +43,7 @@ public class RoomLocalServiceImpl extends RoomLocalServiceBaseImpl {
 
         quarto.setName(name);
         quarto.setDescription(description);
-        quarto.setImageUrl(imageUrl);
+        quarto.setImageFileEntryId(ImageFileEntryId);
         quarto.setMaxGuests(maxGuests);
         quarto.setDailyRate(dailyRate);
         quarto.setAmenities(amenities);
@@ -53,14 +53,13 @@ public class RoomLocalServiceImpl extends RoomLocalServiceBaseImpl {
     }
 
     @Override
-    public Room updateRoom(String name, String description, long imageUrl, int maxGuests, BigDecimal dailyRate,
-                           String amenities, boolean status, long roomId)
-                            throws NoSuchRoomException {
+    public Room updateRoom(String name, String description, long ImageFileEntryId, int maxGuests, BigDecimal dailyRate, String amenities, boolean status, long roomId)
+            throws NoSuchRoomException {
         Room quarto = roomPersistence.findByPrimaryKey(roomId);
 
         quarto.setName(name);
         quarto.setDescription(description);
-        quarto.setImageUrl(imageUrl);
+        quarto.setImageFileEntryId(ImageFileEntryId);
         quarto.setMaxGuests(maxGuests);
         quarto.setDailyRate(dailyRate);
         quarto.setAmenities(amenities);

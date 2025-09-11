@@ -42,7 +42,7 @@ public class RoomWrapper
 		attributes.put("modifiedDate", getModifiedDate());
 		attributes.put("name", getName());
 		attributes.put("description", getDescription());
-		attributes.put("imageUrl", getImageUrl());
+		attributes.put("ImageFileEntryId", getImageFileEntryId());
 		attributes.put("maxGuests", getMaxGuests());
 		attributes.put("dailyRate", getDailyRate());
 		attributes.put("amenities", getAmenities());
@@ -101,10 +101,10 @@ public class RoomWrapper
 			setDescription(description);
 		}
 
-		Long imageUrl = (Long)attributes.get("imageUrl");
+		Long ImageFileEntryId = (Long)attributes.get("ImageFileEntryId");
 
-		if (imageUrl != null) {
-			setImageUrl(imageUrl);
+		if (ImageFileEntryId != null) {
+			setImageFileEntryId(ImageFileEntryId);
 		}
 
 		Integer maxGuests = (Integer)attributes.get("maxGuests");
@@ -198,13 +198,13 @@ public class RoomWrapper
 	}
 
 	/**
-	 * Returns the image url of this room.
+	 * Returns the image file entry ID of this room.
 	 *
-	 * @return the image url of this room
+	 * @return the image file entry ID of this room
 	 */
 	@Override
-	public long getImageUrl() {
-		return model.getImageUrl();
+	public long getImageFileEntryId() {
+		return model.getImageFileEntryId();
 	}
 
 	/**
@@ -363,13 +363,13 @@ public class RoomWrapper
 	}
 
 	/**
-	 * Sets the image url of this room.
+	 * Sets the image file entry ID of this room.
 	 *
-	 * @param imageUrl the image url of this room
+	 * @param ImageFileEntryId the image file entry ID of this room
 	 */
 	@Override
-	public void setImageUrl(long imageUrl) {
-		model.setImageUrl(imageUrl);
+	public void setImageFileEntryId(long ImageFileEntryId) {
+		model.setImageFileEntryId(ImageFileEntryId);
 	}
 
 	/**

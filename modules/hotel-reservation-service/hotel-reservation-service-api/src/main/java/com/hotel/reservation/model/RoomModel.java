@@ -180,18 +180,18 @@ public interface RoomModel extends BaseModel<Room>, ShardedModel {
 	public void setDescription(String description);
 
 	/**
-	 * Returns the image url of this room.
+	 * Returns the image file entry ID of this room.
 	 *
-	 * @return the image url of this room
+	 * @return the image file entry ID of this room
 	 */
-	public long getImageUrl();
+	public long getImageFileEntryId();
 
 	/**
-	 * Sets the image url of this room.
+	 * Sets the image file entry ID of this room.
 	 *
-	 * @param imageUrl the image url of this room
+	 * @param ImageFileEntryId the image file entry ID of this room
 	 */
-	public void setImageUrl(long imageUrl);
+	public void setImageFileEntryId(long ImageFileEntryId);
 
 	/**
 	 * Returns the max guests of this room.

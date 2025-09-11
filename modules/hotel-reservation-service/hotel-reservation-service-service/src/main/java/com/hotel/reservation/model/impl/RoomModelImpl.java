@@ -68,7 +68,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 		{"companyId", Types.BIGINT}, {"userId", Types.BIGINT},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
 		{"name", Types.VARCHAR}, {"description", Types.VARCHAR},
-		{"imageUrl", Types.BIGINT}, {"maxGuests", Types.INTEGER},
+		{"ImageFileEntryId", Types.BIGINT}, {"maxGuests", Types.INTEGER},
 		{"dailyRate", Types.DECIMAL}, {"amenities", Types.VARCHAR},
 		{"status", Types.BOOLEAN}
 	};
@@ -85,7 +85,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("description", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("imageUrl", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("ImageFileEntryId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("maxGuests", Types.INTEGER);
 		TABLE_COLUMNS_MAP.put("dailyRate", Types.DECIMAL);
 		TABLE_COLUMNS_MAP.put("amenities", Types.VARCHAR);
@@ -93,7 +93,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table Room (roomId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null,description VARCHAR(75) null,imageUrl LONG,maxGuests INTEGER,dailyRate BIGDECIMAL null,amenities VARCHAR(75) null,status BOOLEAN)";
+		"create table Room (roomId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null,description VARCHAR(75) null,ImageFileEntryId LONG,maxGuests INTEGER,dailyRate BIGDECIMAL null,amenities VARCHAR(75) null,status BOOLEAN)";
 
 	public static final String TABLE_SQL_DROP = "drop table Room";
 
@@ -237,7 +237,8 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 			attributeGetterFunctions.put("modifiedDate", Room::getModifiedDate);
 			attributeGetterFunctions.put("name", Room::getName);
 			attributeGetterFunctions.put("description", Room::getDescription);
-			attributeGetterFunctions.put("imageUrl", Room::getImageUrl);
+			attributeGetterFunctions.put(
+				"ImageFileEntryId", Room::getImageFileEntryId);
 			attributeGetterFunctions.put("maxGuests", Room::getMaxGuests);
 			attributeGetterFunctions.put("dailyRate", Room::getDailyRate);
 			attributeGetterFunctions.put("amenities", Room::getAmenities);
@@ -275,7 +276,8 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 			attributeSetterBiConsumers.put(
 				"description", (BiConsumer<Room, String>)Room::setDescription);
 			attributeSetterBiConsumers.put(
-				"imageUrl", (BiConsumer<Room, Long>)Room::setImageUrl);
+				"ImageFileEntryId",
+				(BiConsumer<Room, Long>)Room::setImageFileEntryId);
 			attributeSetterBiConsumers.put(
 				"maxGuests", (BiConsumer<Room, Integer>)Room::setMaxGuests);
 			attributeSetterBiConsumers.put(
@@ -454,17 +456,17 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 
 	@JSON
 	@Override
-	public long getImageUrl() {
-		return _imageUrl;
+	public long getImageFileEntryId() {
+		return _ImageFileEntryId;
 	}
 
 	@Override
-	public void setImageUrl(long imageUrl) {
+	public void setImageFileEntryId(long ImageFileEntryId) {
 		if (_columnOriginalValues == Collections.EMPTY_MAP) {
 			_setColumnOriginalValues();
 		}
 
-		_imageUrl = imageUrl;
+		_ImageFileEntryId = ImageFileEntryId;
 	}
 
 	@JSON
@@ -612,7 +614,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 		roomImpl.setModifiedDate(getModifiedDate());
 		roomImpl.setName(getName());
 		roomImpl.setDescription(getDescription());
-		roomImpl.setImageUrl(getImageUrl());
+		roomImpl.setImageFileEntryId(getImageFileEntryId());
 		roomImpl.setMaxGuests(getMaxGuests());
 		roomImpl.setDailyRate(getDailyRate());
 		roomImpl.setAmenities(getAmenities());
@@ -637,7 +639,8 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 		roomImpl.setName(this.<String>getColumnOriginalValue("name"));
 		roomImpl.setDescription(
 			this.<String>getColumnOriginalValue("description"));
-		roomImpl.setImageUrl(this.<Long>getColumnOriginalValue("imageUrl"));
+		roomImpl.setImageFileEntryId(
+			this.<Long>getColumnOriginalValue("ImageFileEntryId"));
 		roomImpl.setMaxGuests(
 			this.<Integer>getColumnOriginalValue("maxGuests"));
 		roomImpl.setDailyRate(
@@ -761,7 +764,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 			roomCacheModel.description = null;
 		}
 
-		roomCacheModel.imageUrl = getImageUrl();
+		roomCacheModel.ImageFileEntryId = getImageFileEntryId();
 
 		roomCacheModel.maxGuests = getMaxGuests();
 
@@ -846,7 +849,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 	private boolean _setModifiedDate;
 	private String _name;
 	private String _description;
-	private long _imageUrl;
+	private long _ImageFileEntryId;
 	private int _maxGuests;
 	private BigDecimal _dailyRate;
 	private String _amenities;
@@ -888,7 +891,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 		_columnOriginalValues.put("modifiedDate", _modifiedDate);
 		_columnOriginalValues.put("name", _name);
 		_columnOriginalValues.put("description", _description);
-		_columnOriginalValues.put("imageUrl", _imageUrl);
+		_columnOriginalValues.put("ImageFileEntryId", _ImageFileEntryId);
 		_columnOriginalValues.put("maxGuests", _maxGuests);
 		_columnOriginalValues.put("dailyRate", _dailyRate);
 		_columnOriginalValues.put("amenities", _amenities);
@@ -922,7 +925,7 @@ public class RoomModelImpl extends BaseModelImpl<Room> implements RoomModel {
 
 		columnBitmasks.put("description", 128L);
 
-		columnBitmasks.put("imageUrl", 256L);
+		columnBitmasks.put("ImageFileEntryId", 256L);
 
 		columnBitmasks.put("maxGuests", 512L);
 

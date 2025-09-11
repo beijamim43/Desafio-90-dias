@@ -58,7 +58,7 @@ public interface RoomLocalService
 	 * Never modify this interface directly. Add custom service methods to <code>com.hotel.reservation.service.impl.RoomLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the room local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link RoomLocalServiceUtil} if injection and service tracking are not available.
 	 */
 	public Room addRoom(
-		long userId, String name, String description, long imageUrl,
+		long userId, String name, String description, long ImageFileEntryId,
 		int maxGuests, BigDecimal dailyRate, String amenities, boolean status,
 		ServiceContext serviceContext);
 
@@ -271,8 +271,9 @@ public interface RoomLocalService
 	public Room updateRoom(Room room);
 
 	public Room updateRoom(
-			String name, String description, long imageUrl, int maxGuests,
-			BigDecimal dailyRate, String amenities, boolean status, long roomId)
+			String name, String description, long ImageFileEntryId,
+			int maxGuests, BigDecimal dailyRate, String amenities,
+			boolean status, long roomId)
 		throws NoSuchRoomException;
 
 }
